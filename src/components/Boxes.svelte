@@ -4,7 +4,7 @@
         'space-y-3 p-10 hover:bg-secondaryGreen w-full h-full transition-colors duration-300 group ';
 </script>
 
-<div class="grid grid-cols-3 animate-fadein delay-75">
+<div class="grid grid-cols-1 lg:grid-cols-3 animate-fadein delay-75">
     {#each boxes as box}
         <a href="{box.link}" target="_blank">
             <div class="{projectStyle}">
