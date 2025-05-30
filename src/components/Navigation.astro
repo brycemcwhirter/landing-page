@@ -11,7 +11,7 @@ const { avatarUrl, name } = Astro.props;
 
 <header>
     <!-- Desktop Navigation -->
-    <nav class="hidden md:flex w-full items-center justify-between px-6 py-4 bg-primaryBlue/20 backdrop-blur-sm">
+    <nav class="hidden md:flex w-full items-center justify-between px-6 py-4 backdrop-blur-sm">
         <a href="/" class="flex items-center space-x-4 hover:opacity-80 transition-opacity">
             <img src={avatarUrl} alt="Profile Avatar" class="w-10 h-10 rounded-full">
             <span class="text-xl font-semibold">{name}</span>

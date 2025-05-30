@@ -1,6 +1,5 @@
 ---
-import Boxes from '../components/Boxes.svelte'
-import SocialProfiles from '../components/SocialProfiles.astro'
+import Footer from '../components/Footer.astro'
 import Navigation from '../components/Navigation.astro'
 import '../styles/app.css'
 ---
@@ -17,13 +16,8 @@ import '../styles/app.css'
         <Navigation avatarUrl="/profilePicture.png" name="Bryce McWhirter" />
         
         <main class="flex-grow">
-            <!-- Your main content goes here -->
+            
         </main>
-
-        <footer class="w-full py-8 bg-primaryBlue/20 backdrop-blur-sm mt-auto">
-            <div class="container mx-auto px-4 flex justify-center items-center">
-                <SocialProfiles />
-            </div>
-        </footer>
+        <Footer />
     </body>
 </html>

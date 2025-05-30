@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Navigation from '../components/Navigation.astro';
 import SocialProfiles from '../components/SocialProfiles.astro';
 import Boxes from '../components/Boxes.svelte';
+import Footer from '../components/Footer.astro';
 
 interface Props {
     title: string;
@@ -39,11 +40,7 @@ const boxes = entries.map(entry => ({
 
             </div>
         </main>
+        <Footer />
 
-        <footer class="w-full py-8  backdrop-blur-sm mt-auto">
-            <div class="container mx-auto px-4 flex justify-center items-center">
-                <SocialProfiles />
-            </div>
-        </footer>
     </body>
 </html>
