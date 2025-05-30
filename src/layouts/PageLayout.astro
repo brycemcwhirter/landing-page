@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Navigation from '../components/Navigation.astro';
-import Boxes from '../components/Boxes.svelte';
+import Boxes from '../components/Boxes.astro';
 import Footer from '../components/Footer.astro';
 
 interface Props {
@@ -37,7 +37,7 @@ const boxes = entries
                 </div>
                 
 
-                <Boxes client:load boxes={boxes} collection={collection} />
+                <Boxes boxes={boxes} collection={collection} />
 
             </div>
         </main>

@@ -1,24 +1,27 @@
-<script lang="ts">
-    interface Box {
-        title: string;
-        description: string;
-        imgLink: string;
-        altDesc: string;
-        link: string;
-        slug?: string;
-    }
+---
+interface Box {
+    title: string;
+    description: string;
+    imgLink: string;
+    altDesc: string;
+    link: string;
+    slug?: string;
+}
 
-    export let boxes: Box[] = [];
-    export let collection: string;
-    
-    const projectStyle =
-        'space-y-3 p-10 hover:bg-secondaryGreen w-full h-full transition-colors duration-300 group rounded-sm';
-</script>
+interface Props {
+    boxes: Box[];
+    collection: string;
+}
 
-<div class="grid grid-cols-1 lg:grid-cols-3 animate-fadein delay-75 ">
-    {#each boxes as box}
+const { boxes, collection } = Astro.props;
+
+const projectStyle = 'space-y-3 p-10 hover:bg-secondaryGreen w-full h-full transition-colors duration-300 group rounded-sm';
+---
+
+<div class="grid grid-cols-1 lg:grid-cols-3 animate-fadein delay-75">
+    {boxes.map((box) => (
         <a href={`/${collection}/${box.slug}`}>
-            <div class="{projectStyle}">
+            <div class={projectStyle}>
                 <div class="w-full aspect-video mb-8 overflow-hidden">
                     <img
                         src={`/src/images/${box.imgLink}`}
@@ -34,5 +37,5 @@
                 </p>
             </div>
         </a>
-    {/each}
+    ))}
 </div>
