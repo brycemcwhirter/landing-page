@@ -13,10 +13,12 @@ interface Props {
 
 const { title, description, collection } = Astro.props;
 const entries = await getCollection(collection);
-const boxes = entries.map(entry => ({
-    ...entry.data,
-    slug: entry.slug
-}));
+const boxes = entries
+    .filter(entry => !entry.data.hidden)
+    .map(entry => ({
+        ...entry.data,
+        slug: entry.slug
+    }));
 ---
 
 <html lang="en">

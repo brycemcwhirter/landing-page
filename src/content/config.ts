@@ -7,6 +7,7 @@ const boxSchema = z.object({
   imgLink: z.string().url(),
   altDesc: z.string(),
   date: z.date().optional(),
+  hidden: z.boolean().default(false),
 });
 
 export const collections = {

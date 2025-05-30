@@ -1,7 +1,7 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
 import Navigation from '../../components/Navigation.astro';
-import SocialProfiles from '../../components/SocialProfiles.astro';
+import Footer from '../../components/Footer.astro';
 import '../../styles/app.css';
 
 export async function getStaticPaths() {
@@ -55,10 +55,6 @@ const { Content } = await entry.render();
             </article>
         </main>
 
-        <footer class="w-full py-8 bg-primaryBlue/20 backdrop-blur-sm mt-auto">
-            <div class="container mx-auto px-4 flex justify-center items-center">
-                <SocialProfiles />
-            </div>
-        </footer>
+        <Footer />
     </body>
 </html>

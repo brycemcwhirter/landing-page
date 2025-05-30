@@ -29,7 +29,7 @@
                 <h1 class="font-bold text-lg md:text-xl">
                     {box.title}
                 </h1>
-                <p class="text-xs md:text-sm text-justify">
+                <p class="text-xs md:text-sm text-left">
                     {box.description}
                 </p>
             </div>
