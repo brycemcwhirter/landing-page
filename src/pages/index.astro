@@ -1,25 +1,32 @@
 ---
-import Boxes from '../components/Boxes.svelte'
-import SocialProfiles from '../components/SocialProfiles.astro'
+import Footer from '../components/Footer.astro'
+import Navigation from '../components/Navigation.astro'
 import '../styles/app.css'
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Bryce McWhirter</title>
-	</head>
-	<body class="gradient-bg text-primaryWhite">
-	<div class="md:space-y-3 md:py-5">
-		<div class="flex flex-col justify-center items-center text-center space-y-3">
-			<img class="w-44 h-44 mx-auto" src="/profilePicture.png" alt="Bryce McWhirter Profile Picture"/>
-			<h1 class="font-bold text-2xl lg:text-4xl">Bryce McWhirter</h1>
-			<SocialProfiles />
-		</div>
-		<Boxes/>
-	</div>
-	</body>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Bryce McWhirter</title>
+    </head>
+    <body class="gradient-bg text-primaryWhite min-h-screen flex flex-col">
+        <Navigation avatarUrl="/profilePicture.png" name="Bryce McWhirter" />
+        <main class="flex-grow flex items-center justify-center px-4">
+            <div class="backdrop-blur-sm rounded-lg p-8 max-w-4xl w-full">
+            <div class="flex flex-col items-center justify-center text-center">
+                <img 
+                src="/profilePicture.png" 
+                alt="Bryce McWhirter" 
+                class="w-48 h-48 rounded-full mb-4"
+                />
+                <h1 class="text-4xl font-bold">Bryce McWhirter</h1>
+            </div>
+            </div>
+        </main>
+
+        <Footer />
+    </body>
 </html>

@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import Navigation from '../components/Navigation.astro';
+import Boxes from '../components/Boxes.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+    title: string;
+    description: string;
+    collection: 'developer' | 'musician' | 'content' | 'blog';
+}
+
+const { title, description, collection } = Astro.props;
+const entries = await getCollection(collection);
+const boxes = entries
+    .filter(entry => !entry.data.hidden)
+    .map(entry => ({
+        ...entry.data,
+        slug: entry.slug
+    }));
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{title} | Bryce McWhirter</title>
+    </head>
+    <body class="gradient-bg text-primaryWhite min-h-screen flex flex-col">
+        <Navigation avatarUrl="/profilePicture.png" name="Bryce McWhirter" />
+        
+        <main class="flex-grow container mx-auto px-4 py-8">
+            <div class="backdrop-blur-sm rounded-lg p-8 space-y-8">
+                <div class="space-y-4">
+                    <h1 class="text-4xl font-bold">{title}</h1>
+                    <p class="text-lg text-primaryWhite/80">{description}</p>
+                </div>
+                
+
+                <Boxes boxes={boxes} collection={collection} />
+
+            </div>
+        </main>
+
+        <Footer />
+    </body>
+</html>

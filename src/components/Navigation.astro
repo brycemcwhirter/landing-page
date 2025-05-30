@@ -1,0 +1,30 @@
+---
+import MobileNav from './MobileNav.svelte';
+
+interface Props {
+    avatarUrl: string;
+    name: string;
+}
+
+const { avatarUrl, name } = Astro.props;
+---
+
+<header>
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex w-full items-center justify-between px-6 py-4 backdrop-blur-sm">
+        <a href="/" class="flex items-center space-x-4 hover:opacity-80 transition-opacity">
+            <img src={avatarUrl} alt="Profile Avatar" class="w-10 h-10 rounded-full">
+            <span class="text-xl font-semibold">{name}</span>
+        </a>
+        
+        <div class="flex space-x-8">
+            <!-- <a href="/developer" class="hover:text-primaryWhite/80 transition-colors">Developer</a>
+            <a href="/content" class="hover:text-primaryWhite/80 transition-colors">Content</a>
+            <a href="/musician" class="hover:text-primaryWhite/80 transition-colors">Musician</a> -->
+            <a href="/blog" class="hover:text-primaryWhite/80 transition-colors">Blog</a>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <MobileNav client:load name={name} />
+</header>
