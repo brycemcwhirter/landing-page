@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import Navigation from '../components/Navigation.astro';
 import SocialProfiles from '../components/SocialProfiles.astro';
 import Boxes from '../components/Boxes.svelte';
@@ -6,16 +7,15 @@ import Boxes from '../components/Boxes.svelte';
 interface Props {
     title: string;
     description: string;
-    boxes: Array<{
-        title: string;
-        description: string;
-        imgLink: string;
-        altDesc: string;
-        link: string;
-    }>;
+    collection: 'developer' | 'musician' | 'content' | 'blog';
 }
 
-const { title, description, boxes } = Astro.props;
+const { title, description, collection } = Astro.props;
+const entries = await getCollection(collection);
+const boxes = entries.map(entry => ({
+    ...entry.data,
+    // You can now access entry.body if you need the markdown content
+}));
 ---
 
 <html lang="en">
@@ -25,17 +25,16 @@ const { title, description, boxes } = Astro.props;
         <title>{title} | Bryce McWhirter</title>
     </head>
     <body class="gradient-bg text-primaryWhite min-h-screen flex flex-col">
-        <Navigation client:load avatarUrl="/profilePicture.png" name="Bryce McWhirter" />
+        <Navigation avatarUrl="/profilePicture.png" name="Bryce McWhirter" />
         
-        <main class="flex-grow container">
-            <div class="p-8 ">
-                <!-- Content Section -->
+        <main class="flex-grow container mx-auto px-4 py-8">
+            <div class=" backdrop-blur-sm rounded-lg p-8 space-y-8">
                 <div class="space-y-4">
                     <h1 class="text-4xl font-bold">{title}</h1>
                     <p class="text-lg text-primaryWhite/80">{description}</p>
                 </div>
                 
-                <!-- Boxes Section -->
+
                 <Boxes client:load boxes={boxes} />
 
             </div>
@@ -43,7 +42,7 @@ const { title, description, boxes } = Astro.props;
 
         <footer class="w-full py-8  backdrop-blur-sm mt-auto">
             <div class="container mx-auto px-4 flex justify-center items-center">
-                <SocialProfiles client:load />
+                <SocialProfiles />
             </div>
         </footer>
     </body>
