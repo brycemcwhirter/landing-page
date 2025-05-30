@@ -14,7 +14,7 @@ const { title, description, collection } = Astro.props;
 const entries = await getCollection(collection);
 const boxes = entries.map(entry => ({
     ...entry.data,
-    // You can now access entry.body if you need the markdown content
+    slug: entry.slug
 }));
 ---
 
@@ -35,7 +35,7 @@ const boxes = entries.map(entry => ({
                 </div>
                 
 
-                <Boxes client:load boxes={boxes} />
+                <Boxes client:load boxes={boxes} collection={collection} />
 
             </div>
         </main>

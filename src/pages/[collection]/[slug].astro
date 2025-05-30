@@ -1,0 +1,64 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Navigation from '../../components/Navigation.astro';
+import SocialProfiles from '../../components/SocialProfiles.astro';
+import '../../styles/app.css';
+
+export async function getStaticPaths() {
+    const collections = ['developer', 'musician', 'content', 'blog'];
+    const paths = [];
+
+    for (const collection of collections) {
+        const entries = await getCollection(collection);
+        const collectionPaths = entries.map(entry => ({
+            params: { 
+                collection: collection,
+                slug: entry.slug 
+            },
+            props: { entry },
+        }));
+        paths.push(...collectionPaths);
+    }
+
+    return paths;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{entry.data.title} | Bryce McWhirter</title>
+    </head>
+    <body class="gradient-bg text-primaryWhite min-h-screen flex flex-col">
+        <Navigation avatarUrl="/profilePicture.png" name="Bryce McWhirter" />
+        
+        <main class="flex-grow container mx-auto px-4 py-8">
+            <article class="prose prose-invert mx-auto max-w-3xl">
+                <img 
+                    src={entry.data.imgLink} 
+                    alt={entry.data.altDesc}
+                    class="w-full aspect-video object-cover rounded-lg mb-8"
+                />
+                <h1 class="text-4xl font-bold mb-4">{entry.data.title}</h1>
+                {entry.data.date && (
+                    <time class="text-primaryWhite/80 block mb-8">
+                        {new Date(entry.data.date).toLocaleDateString()}
+                    </time>
+                )}
+                <div class="content">
+                    <Content />
+                </div>
+            </article>
+        </main>
+
+        <footer class="w-full py-8 bg-primaryBlue/20 backdrop-blur-sm mt-auto">
+            <div class="container mx-auto px-4 flex justify-center items-center">
+                <SocialProfiles />
+            </div>
+        </footer>
+    </body>
+</html>
