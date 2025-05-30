@@ -21,7 +21,7 @@
             <div class="{projectStyle}">
                 <div class="w-full aspect-video mb-8 overflow-hidden">
                     <img
-                        src={box.imgLink}
+                        src={`/src/images/${box.imgLink}`}
                         alt={box.altDesc}
                         class="w-full h-full object-cover rounded-sm"
                     />
