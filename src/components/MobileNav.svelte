@@ -9,7 +9,7 @@
 
 <div class="md:hidden">
     <!-- Top Bar -->
-    <div class="flex items-center justify-between px-6 py-4 bg-primaryBlue/20 backdrop-blur-sm">
+    <div class="flex items-center justify-between px-6 py-4 backdrop-blur-sm">
         <button 
             class="z-50 w-8 h-8 flex flex-col justify-center relative"
             on:click={toggleMenu}
