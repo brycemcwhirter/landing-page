@@ -12,10 +12,10 @@
     export let collection: string;
     
     const projectStyle =
-        'space-y-3 p-10 hover:bg-secondaryGreen w-full h-full transition-colors duration-300 group';
+        'space-y-3 p-10 hover:bg-secondaryGreen w-full h-full transition-colors duration-300 group rounded-sm';
 </script>
 
-<div class="grid grid-cols-1 lg:grid-cols-3 animate-fadein delay-75">
+<div class="grid grid-cols-1 lg:grid-cols-3 animate-fadein delay-75 ">
     {#each boxes as box}
         <a href={`/${collection}/${box.slug}`}>
             <div class="{projectStyle}">
@@ -23,7 +23,7 @@
                     <img
                         src={box.imgLink}
                         alt={box.altDesc}
-                        class="w-full h-full object-cover"
+                        class="w-full h-full object-cover rounded-sm"
                     />
                 </div>
                 <h1 class="font-bold text-lg md:text-xl">
